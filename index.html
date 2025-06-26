@@ -400,31 +400,33 @@
 
                                     <!-- Delivery Type Selection - Improved Design -->
                                     <div
-                                        class="form-group"
+                                        class="form-group delivery-type-wrapper"
                                         id="deliveryTypeGroup"
                                         style="display: none"
                                     >
-                                        <label class="delivery-selection-label">
+                                        <label class="delivery-label">
                                             <i class="fas fa-truck"></i>
-                                            اختر نوع التوصيل:
+                                            نوع التوصيل:
                                         </label>
-                                        <div class="delivery-options-container">
-                                            <div
-                                                class="delivery-option"
+                                        <div class="delivery-buttons">
+                                            <button
+                                                type="button"
+                                                class="delivery-btn"
                                                 data-type="home"
                                                 onclick="selectDeliveryType(this)"
                                             >
                                                 <i class="fas fa-home"></i>
-                                                <span>المنزل</span>
-                                            </div>
-                                            <div
-                                                class="delivery-option"
+                                                منزل
+                                            </button>
+                                            <button
+                                                type="button"
+                                                class="delivery-btn"
                                                 data-type="office"
                                                 onclick="selectDeliveryType(this)"
                                             >
                                                 <i class="fas fa-building"></i>
-                                                <span>المكتب</span>
-                                            </div>
+                                                مكتب
+                                            </button>
                                         </div>
                                         <div
                                             id="deliveryPrice"

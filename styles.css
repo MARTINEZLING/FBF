@@ -679,38 +679,47 @@ body {
     font-size: 13px;
 }
 
-.delivery-options-container {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 10px;
-    justify-content: center;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
+/* Mobile-First Delivery Selection - Redesigned */
+.delivery-type-wrapper {
+    margin-bottom: 15px;
 }
 
-.delivery-option {
-    padding: 6px 8px;
-    border: 1px solid #dee2e6;
-    border-radius: 6px;
+.delivery-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057;
+    font-size: 14px;
+}
+
+.delivery-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+.delivery-btn {
+    padding: 10px 12px;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
     background: white;
+    color: #495057;
+    font-family: 'Cairo', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
-    font-weight: 500;
-    font-size: 12px;
-    color: #495057;
+    gap: 6px;
     transition: all 0.2s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    font-family: 'Cairo', sans-serif;
-    text-align: center;
-    min-height: 32px;
-    flex: 1;
-    min-width: 0;
-    max-width: 48%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    min-height: 40px;
     box-sizing: border-box;
 }
 
@@ -1055,17 +1064,17 @@ body {
         font-size: 14px;
     }
     
-    /* Delivery options mobile responsive */
-    .delivery-options-container {
-        gap: 4px;
-        padding: 0 5px;
+    /* Mobile delivery buttons */
+    .delivery-buttons {
+        gap: 6px;
+        max-width: 260px;
     }
     
-    .delivery-option {
-        padding: 5px 6px;
-        font-size: 11px;
-        gap: 2px;
-        max-width: 47%;
+    .delivery-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+        gap: 4px;
+        min-height: 36px;
     }
 }
 

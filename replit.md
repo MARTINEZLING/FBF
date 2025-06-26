@@ -94,6 +94,7 @@ This is a responsive Arabic landing page template for product sales with integra
 - June 25, 2025. PRODUCT IMAGES UPDATE: Replaced all 4 product images with new sandal images. Updated main image and thumbnail gallery to show brown and black leather sandals with detailed product views including sole design.
 - June 25, 2025. TELEGRAM COLOR TRANSLATION: Added French color translation for Telegram messages. Color names now appear in French (Marron Clair, Marron Foncé, Noir) while keeping rest of message content in Arabic.
 - June 25, 2025. ASSETS CLEANUP: Cleaned attached_assets folder from 39 files to 4 essential product images. Removed all unused images, temporary text files, and PNG files. Kept only the 4 current product images in use by the landing page.
+- June 26, 2025. PRODUCT COMPLETE OVERHAUL: Changed product from men's sandals to DGLITE POWERBANK LED solar lighting device. Updated pricing (6500/7000 DA with 7% discount), product name, descriptions, and 6-point specifications. Removed color/size selection features as not applicable. Updated JavaScript configuration, validation logic, and Telegram message format.
 
 ## User Preferences
 

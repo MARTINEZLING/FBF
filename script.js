@@ -7,10 +7,10 @@ const TELEGRAM_CONFIG = {
 
 // Product configuration
 const PRODUCT_CONFIG = {
-    basePrice: 2500,
-    originalPrice: 2800,
-    discountPercentage: 11,
-    productName: "صندال رجالي عصري 2 في واحد",
+    basePrice: 6500,
+    originalPrice: 7000,
+    discountPercentage: 7,
+    productName: "DGLITE POWERBANK LED",
     currency: "د.ج",
     defaultColor: "Light Brown",
     defaultSize: "40",
@@ -459,13 +459,9 @@ function updateOrderSummary() {
     // Calculate total price
     const totalPrice = productPrice + deliveryPrice;
 
-    // Get selected color and size
-    const selectedColor =
-        document.querySelector(".color-circle.active")?.dataset.color ||
-        PRODUCT_CONFIG.defaultColor;
-    const selectedSize =
-        document.querySelector(".size-circle.active")?.dataset.size ||
-        PRODUCT_CONFIG.defaultSize;
+    // No color and size selection for DGLITE POWERBANK LED
+    const selectedColor = null;
+    const selectedSize = null;
 
     console.log("Summary values:", {
         quantity,
@@ -500,14 +496,7 @@ function updateOrderSummary() {
         summaryTotal.textContent = formatArabicNumber(totalPrice);
         console.log("Updated total:", summaryTotal.textContent);
     }
-    if (summaryColor) {
-        summaryColor.textContent = selectedColor;
-        console.log("Updated color:", summaryColor.textContent);
-    }
-    if (summarySize) {
-        summarySize.textContent = selectedSize;
-        console.log("Updated size:", summarySize.textContent);
-    }
+    // Color and size summary removed for DGLITE POWERBANK LED
     if (summaryDelivery) {
         summaryDelivery.textContent =
             formatArabicNumber(deliveryPrice) + " د.ج";
@@ -759,17 +748,7 @@ function validateOrder(orderData) {
         errors.push("• يرجى اختيار نوع التوصيل");
     }
 
-    // Validate color selection
-    const selectedColor = document.querySelector(".color-circle.active");
-    if (!selectedColor) {
-        errors.push("• يرجى اختيار اللون");
-    }
-
-    // Validate size selection
-    const selectedSize = document.querySelector(".size-circle.active");
-    if (!selectedSize) {
-        errors.push("• يرجى اختيار القياس");
-    }
+    // Color and size validation removed for DGLITE POWERBANK LED
 
     if (errors.length > 0) {
         showModal(
@@ -797,13 +776,10 @@ async function sendTelegramNotifications(orderData) {
     const quantity = parseInt(orderData.quantity) || 1;
     const currentTime = new Date().toLocaleString("ar-DZ");
 
-    const selectedColor =
-        document.querySelector(".color-circle.active")?.dataset.color ||
-        PRODUCT_CONFIG.defaultColor;
-    const selectedColorFrench = translateColorToFrench(selectedColor);
-    const selectedSize =
-        document.querySelector(".size-circle.active")?.dataset.size ||
-        PRODUCT_CONFIG.defaultSize;
+    // No color and size for DGLITE POWERBANK LED
+    const selectedColor = null;
+    const selectedColorFrench = null;
+    const selectedSize = null;
     const selectedDeliveryType =
         document.querySelector(".delivery-option.active")?.dataset.type ||
         "home";
@@ -841,8 +817,6 @@ async function sendTelegramNotifications(orderData) {
 🎯 <b>تفاصيل المنتج:</b>
 المنتج: ${PRODUCT_CONFIG.productName}
 الكمية: ${orderData.quantity}
-اللون: ${selectedColorFrench}
-المقاس: ${selectedSize}
 
 💰 <b>تفاصيل السعر:</b>
 سعر المنتج: ${productPrice.toLocaleString()} ${PRODUCT_CONFIG.currency}

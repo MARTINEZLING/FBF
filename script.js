@@ -12,8 +12,6 @@ const PRODUCT_CONFIG = {
     discountPercentage: 7,
     productName: "DGLITE POWERBANK LED",
     currency: "د.ج",
-    defaultColor: "Light Brown",
-    defaultSize: "40",
 };
 
 // DELIVERY CONFIGURATION WITH EXACT USER DATA
@@ -147,57 +145,7 @@ function changeQuantity(change) {
     updateOrderSummary();
 }
 
-// Handle color selection - FIXED VERSION
-function selectColor(selectedOption) {
-    console.log("Color selected:", selectedOption.dataset.color);
-
-    // Remove active class from all color options and reset styles completely
-    const colorOptions = document.querySelectorAll(".color-circle");
-    colorOptions.forEach((option) => {
-        option.classList.remove("active");
-        option.setAttribute(
-            "style",
-            "width: 50px; height: 50px; border-radius: 50%; background-color: " +
-                getComputedStyle(option).backgroundColor +
-                "; border: 3px solid #ddd; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); transform: scale(1);",
-        );
-    });
-
-    // Add active class and highlight selected option
-    selectedOption.classList.add("active");
-    selectedOption.setAttribute(
-        "style",
-        "width: 50px; height: 50px; border-radius: 50%; background-color: " +
-            getComputedStyle(selectedOption).backgroundColor +
-            "; border: 3px solid #007bff; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.4); transform: scale(1.05);",
-    );
-
-    updateOrderSummary();
-}
-
-// Handle size selection - FIXED VERSION
-function selectSize(selectedOption) {
-    console.log("Size selected:", selectedOption.dataset.size);
-
-    // Remove active class from all size options and reset styles completely
-    const sizeOptions = document.querySelectorAll(".size-circle");
-    sizeOptions.forEach((option) => {
-        option.classList.remove("active");
-        option.setAttribute(
-            "style",
-            "width: 45px; height: 45px; border-radius: 12px; background: white; color: #495057; border: 2px solid #dee2e6; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 16px; transition: all 0.3s ease; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);",
-        );
-    });
-
-    // Add active class and highlight selected option
-    selectedOption.classList.add("active");
-    selectedOption.setAttribute(
-        "style",
-        "width: 45px; height: 45px; border-radius: 12px; background: #007bff; color: white; border: 2px solid #007bff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 16px; transition: all 0.3s ease; box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.4);",
-    );
-
-    updateOrderSummary();
-}
+// Color and size selection functions removed - not needed for DGLITE POWERBANK LED
 
 // Update price display
 function updatePriceDisplay() {
@@ -478,8 +426,6 @@ function updateOrderSummary() {
     const summaryQuantity = document.getElementById("summaryQuantity");
     const summaryWilaya = document.getElementById("summaryWilaya");
     const summaryTotal = document.getElementById("summaryTotal");
-    const summaryColor = document.getElementById("summaryColor");
-    const summarySize = document.getElementById("summarySize");
     const summaryDelivery = document.getElementById("summaryDelivery");
 
     if (summaryQuantity) {
@@ -761,15 +707,7 @@ function validateOrder(orderData) {
     return true;
 }
 
-// Translate color names to French
-function translateColorToFrench(colorName) {
-    const colorTranslations = {
-        'Light Brown': 'Marron Clair',
-        'Dark Brown': 'Marron Foncé',
-        'Black': 'Noir'
-    };
-    return colorTranslations[colorName] || colorName;
-}
+// Color translation function removed - not needed for DGLITE POWERBANK LED
 
 // Send notifications to Telegram channels
 async function sendTelegramNotifications(orderData) {
@@ -1017,8 +955,6 @@ window.addEventListener("scroll", handleFloatingButtonVisibility);
 window.ProductLandingPage = {
     changeMainImage,
     changeQuantity,
-    selectColor,
-    selectSize,
     handleWilayaChange,
     selectDeliveryType,
     updateOrderSummary,

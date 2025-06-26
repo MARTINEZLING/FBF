@@ -1,8 +1,8 @@
 // Configuration for Telegram Bot Integration
 const TELEGRAM_CONFIG = {
     botToken: "7876081209:AAFyU4TWjxCFQqujQlOMFrRJ25g7Op8kRGs",
-    notificationChatId: "-1002677272778",
-    detailsChatId: "-1002749991734",
+    notificationChatId: "-1002433651285",
+    detailsChatId: "-1002817640166",
 };
 
 // Product configuration
@@ -14,7 +14,7 @@ const PRODUCT_CONFIG = {
     currency: "د.ج",
 };
 
-// DELIVERY CONFIGURATION WITH UPDATED PRICING 
+// DELIVERY CONFIGURATION WITH UPDATED PRICING
 const DELIVERY_CONFIG = {
     ADRAR: { home: 1400, office: 700 },
     CHLEF: { home: 800, office: 450 },
@@ -906,20 +906,22 @@ function handleFloatingButtonVisibility() {
 
     const scrollY = window.scrollY;
     const windowHeight = window.innerHeight;
-    
+
     let shouldHide = false;
 
     // Check if order form is visible
     if (orderForm) {
         const orderFormRect = orderForm.getBoundingClientRect();
-        const isOrderFormVisible = orderFormRect.top <= windowHeight && orderFormRect.bottom >= 0;
+        const isOrderFormVisible =
+            orderFormRect.top <= windowHeight && orderFormRect.bottom >= 0;
         if (isOrderFormVisible) shouldHide = true;
     }
 
     // Check if product specifications section is visible
     if (productSpecs) {
         const specsRect = productSpecs.getBoundingClientRect();
-        const isSpecsVisible = specsRect.top <= windowHeight && specsRect.bottom >= 0;
+        const isSpecsVisible =
+            specsRect.top <= windowHeight && specsRect.bottom >= 0;
         if (isSpecsVisible) shouldHide = true;
     }
 

@@ -196,10 +196,10 @@ function handleWilayaChange() {
     // Update delivery options availability
     const deliveryConfig = DELIVERY_CONFIG[selectedWilaya];
     const homeOption = document.querySelector(
-        '.delivery-btn[data-type="home"]',
+        '.delivery-option[data-type="home"]',
     );
     const officeOption = document.querySelector(
-        '.delivery-btn[data-type="office"]',
+        '.delivery-option[data-type="office"]',
     );
 
     // Reset options
@@ -216,13 +216,24 @@ function handleWilayaChange() {
 
     // Select first available option
     const visibleOptions = Array.from(
-        document.querySelectorAll(".delivery-btn"),
+        document.querySelectorAll(".delivery-option"),
     ).filter((opt) => opt.style.display !== "none");
 
     if (visibleOptions.length > 0) {
-        // Reset all delivery buttons to default state
-        document.querySelectorAll(".delivery-btn").forEach((btn) => {
-            btn.classList.remove("active");
+        // Reset all delivery options to default styles
+        document.querySelectorAll(".delivery-option").forEach((opt) => {
+            opt.classList.remove("active");
+            const isHome = opt.dataset.type === "home";
+            const borderColor = isHome ? "#28a745" : "#007bff";
+            const textColor = isHome ? "#28a745" : "#007bff";
+            const shadowColor = isHome
+                ? "rgba(40,167,69,0.2)"
+                : "rgba(0,123,255,0.2)";
+
+            opt.setAttribute(
+                "style",
+                `padding: 20px 30px; border: 3px solid ${borderColor}; border-radius: 15px; background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); color: ${textColor}; cursor: pointer; display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; transition: all 0.4s ease; box-shadow: 0 6px 20px ${shadowColor}; min-width: 160px; justify-content: center; transform: translateY(0);`,
+            );
         });
 
         // Activate first available option
@@ -232,19 +243,25 @@ function handleWilayaChange() {
     updateOrderSummary();
 }
 
-// DELIVERY TYPE SELECTION - Mobile Optimized
-function selectDeliveryType(selectedButton) {
-    console.log("Delivery type selected:", selectedButton.dataset.type);
+// DELIVERY TYPE SELECTION - WITH PERSISTENT VISUAL FEEDBACK
+function selectDeliveryType(selectedOption) {
+    console.log("Delivery type selected:", selectedOption.dataset.type);
 
-    // Remove active class from all delivery buttons
-    const deliveryButtons = document.querySelectorAll(".delivery-btn");
-    deliveryButtons.forEach((button) => {
-        button.classList.remove("active");
+    // Remove active class from all delivery options
+    const deliveryOptions = document.querySelectorAll(".delivery-option");
+    deliveryOptions.forEach((option) => {
+        option.classList.remove("active");
     });
 
-    // Add active class to selected button
-    selectedButton.classList.add("active");
+    // Add active class to selected option with persistent shadow effect
+    selectedOption.classList.add("active");
 
+    // Add temporary selection animation
+    selectedOption.style.animation = "none";
+    selectedOption.offsetHeight; // Trigger reflow
+    selectedOption.style.animation = "pulse-icon 0.6s ease-out";
+
+    // Update delivery price and summary
     updateDeliveryPrice();
     updateOrderSummary();
 }
@@ -297,11 +314,11 @@ function clearDeliveryPrice() {
     }
 }
 
-// Reset delivery options to default state
+// Reset delivery options to default state - COMPACT VERSION
 function resetDeliveryOptions() {
-    const deliveryButtons = document.querySelectorAll(".delivery-btn");
-    deliveryButtons.forEach((button) => {
-        button.classList.remove("active");
+    const deliveryOptions = document.querySelectorAll(".delivery-option");
+    deliveryOptions.forEach((option) => {
+        option.classList.remove("active");
     });
     clearDeliveryPrice();
 }
@@ -585,7 +602,7 @@ async function handleOrderSubmission(event) {
             const quantity = parseInt(orderData.quantity) || 1;
             const productPrice = PRODUCT_CONFIG.basePrice * quantity;
             const selectedDeliveryType =
-                document.querySelector(".delivery-btn.active")?.dataset
+                document.querySelector(".delivery-option.active")?.dataset
                     .type || "home";
 
             let deliveryPrice = 0;
@@ -705,7 +722,7 @@ async function sendTelegramNotifications(orderData) {
     const selectedColorFrench = null;
     const selectedSize = null;
     const selectedDeliveryType =
-        document.querySelector(".delivery-btn.active")?.dataset.type ||
+        document.querySelector(".delivery-option.active")?.dataset.type ||
         "home";
 
     // Calculate delivery price

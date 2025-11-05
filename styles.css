@@ -269,7 +269,9 @@ body {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     border-radius: 15px;
     padding: 20px;
+    padding-bottom: 25px;
     margin: 25px 0;
+    margin-bottom: 0;
     border: 2px solid #dee2e6;
 }
 
@@ -637,7 +639,7 @@ body {
 .floating-order-btn {
     position: fixed;
     bottom: 50px;
-    left: 25px;
+    right: 25px;
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
     border: none;
@@ -680,7 +682,7 @@ body {
 @media (max-width: 768px) {
     .floating-order-btn {
         bottom: 40px;
-        left: 20px;
+        right: 20px;
         padding: 14px 24px;
         font-size: 15px;
     }
@@ -693,7 +695,7 @@ body {
 @media (max-width: 480px) {
     .floating-order-btn {
         bottom: 35px;
-        left: 18px;
+        right: 18px;
         padding: 12px 20px;
         font-size: 14px;
     }

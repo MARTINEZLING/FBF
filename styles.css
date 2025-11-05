@@ -17,7 +17,7 @@ body {
 .container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0;
 }
 
 /* Main Content */
@@ -28,10 +28,10 @@ body {
 /* Product Banner */
 .product-banner {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 0;
     border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: none;
 }
 
 .banner-image {
@@ -43,10 +43,11 @@ body {
 /* Order Section */
 .order-section {
     background: white;
-    border-radius: 20px;
+    border-radius: 20px 20px 0 0;
     padding: 30px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+    box-shadow: 0 -5px 35px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0;
+    margin-top: -5px;
 }
 
 /* Order Form */
@@ -495,12 +496,12 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
-        padding: 10px;
+        padding: 0;
     }
     
     .order-section {
         padding: 20px;
-        border-radius: 15px;
+        border-radius: 15px 15px 0 0;
     }
     
     .form-row {
@@ -569,16 +570,17 @@ body {
 
 @media (max-width: 480px) {
     .container {
-        padding: 5px;
+        padding: 0;
     }
     
     .product-banner {
-        margin-bottom: 15px;
+        margin-bottom: 0;
     }
     
     .order-section {
         padding: 15px;
-        border-radius: 12px;
+        border-radius: 12px 12px 0 0;
+        margin-top: -3px;
     }
     
     .form-header {
@@ -624,5 +626,75 @@ body {
     
     .total-amount {
         font-size: 20px;
+    }
+}
+
+/* Floating Order Button */
+.floating-order-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 16px 28px;
+    border-radius: 50px;
+    font-size: 17px;
+    font-weight: 700;
+    font-family: 'Cairo', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    opacity: 1;
+    visibility: visible;
+}
+
+.floating-order-btn:hover {
+    background: linear-gradient(135deg, #764ba2, #667eea);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+}
+
+.floating-order-btn:active {
+    transform: translateY(-1px);
+}
+
+.floating-order-btn.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100px);
+}
+
+.floating-order-btn i {
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    .floating-order-btn {
+        bottom: 20px;
+        right: 20px;
+        padding: 14px 24px;
+        font-size: 15px;
+    }
+    
+    .floating-order-btn i {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-order-btn {
+        bottom: 15px;
+        right: 15px;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    .floating-order-btn i {
+        font-size: 15px;
     }
 }

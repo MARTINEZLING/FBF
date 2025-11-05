@@ -86,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initializeEventListeners();
     updatePriceDisplay();
     updateOrderSummary();
+    initializeFloatingButton();
 });
 
 // Initialize all event listeners
@@ -602,3 +603,38 @@ window.onclick = function (event) {
         closeModal();
     }
 };
+
+// Initialize floating button functionality
+function initializeFloatingButton() {
+    const floatingBtn = document.getElementById("floatingOrderBtn");
+    const orderSection = document.getElementById("orderSection");
+    
+    if (!floatingBtn || !orderSection) return;
+    
+    // Handle button click - scroll to form
+    floatingBtn.addEventListener("click", function() {
+        orderSection.scrollIntoView({ 
+            behavior: "smooth", 
+            block: "start" 
+        });
+    });
+    
+    // Handle scroll - hide button when form is visible
+    window.addEventListener("scroll", function() {
+        const rect = orderSection.getBoundingClientRect();
+        const isFormVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        
+        if (isFormVisible) {
+            floatingBtn.classList.add("hidden");
+        } else {
+            floatingBtn.classList.remove("hidden");
+        }
+    });
+    
+    // Initial check
+    const rect = orderSection.getBoundingClientRect();
+    const isFormVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    if (isFormVisible) {
+        floatingBtn.classList.add("hidden");
+    }
+}
